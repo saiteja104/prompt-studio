@@ -14,4 +14,6 @@ class User(Base):
     hashed_password = Column(String, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
 
-    projects = relationship("Project", back_populates="user")
+    projects = relationship("Project", back_populates="creator")
+    project_memberships = relationship("ProjectMember", back_populates="user")
+    activity_logs = relationship("ActivityLog", back_populates="user")

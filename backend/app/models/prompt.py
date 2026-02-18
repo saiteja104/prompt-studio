@@ -10,7 +10,7 @@ class Prompt(Base):
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     project_id = Column(UUID(as_uuid=True), ForeignKey("projects.id", ondelete="CASCADE"), nullable=False)
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    created_by = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
     name = Column(String(255), nullable=False)
     description = Column(Text, nullable=True)
     tags = Column(ARRAY(String), default=[])
@@ -20,3 +20,4 @@ class Prompt(Base):
     project = relationship("Project", back_populates="prompts")
     versions = relationship("PromptVersion", back_populates="prompt")
     runs = relationship("Run", back_populates="prompt")
+    activity_logs = relationship("ActivityLog", back_populates="prompt")

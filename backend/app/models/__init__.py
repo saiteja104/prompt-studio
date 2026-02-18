@@ -1,5 +1,7 @@
 from app.models.user import User
 from app.models.project import Project
+from app.models.project_member import ProjectMember
+from app.models.activity_log import ActivityLog
 from app.models.prompt import Prompt
 from app.models.prompt_version import PromptVersion
 from app.models.llm_model import LLMModel
