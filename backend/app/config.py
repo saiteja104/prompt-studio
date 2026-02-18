@@ -1,4 +1,7 @@
 from pydantic_settings import BaseSettings
+from pathlib import Path
+
+env_path = Path(__file__).resolve().parent.parent / ".env"
 
 class Settings(BaseSettings):
     APP_ENV: str = "development"
@@ -11,6 +14,6 @@ class Settings(BaseSettings):
     GOOGLE_API_KEY: str = ""
 
     class Config:
-        env_file = "backend/.env"
+        env_file = str(env_path)
 
 settings = Settings()
